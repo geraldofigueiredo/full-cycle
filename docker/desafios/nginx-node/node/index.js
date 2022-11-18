@@ -9,6 +9,13 @@ const config = {
 };
 const mysql = require('mysql')
 const db = mysql.createConnection(config)
+db.query(`CREATE TABLE people(name varchar(255))`,(err, result) => {
+    if (err) {
+        console.log('tabela ja existe!')
+        return
+    }
+    console.log('tabela criada com sucesso!')
+})
 db.query(`INSERT INTO people(name) VALUES('Geraldo')`)
 
 const persistName = (name) => {
